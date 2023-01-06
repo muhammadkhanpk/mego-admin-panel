@@ -1,0 +1,26 @@
+
+.owner_content{
+  margin-top: 60px;
+}
+.main_layout_div{
+    width: 100%;
+    min-height: 100vh;
+}
+.ant-layout {
+    min-height: 100vh !important;
+}
+
+
+.site-layout .site-layout-background {
+  background: #fff;
+ 
+}
+.main_layout_div{
+  width: 100%;
+  overflow: auto;
+
+}
+
+/* @media screen and (max-width:800px) {
+  
+} */

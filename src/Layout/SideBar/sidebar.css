@@ -1,0 +1,10 @@
+.ant-layout-sider {
+height: 100%;
+}
+.img-logo{
+    font-size: 50px;
+    margin: 10px 0px;
+}
+.ant-menu-item .ant-menu-item-icon{
+    font-size: 20px !important;
+}
