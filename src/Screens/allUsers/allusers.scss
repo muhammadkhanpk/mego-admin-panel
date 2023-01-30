@@ -1,0 +1,23 @@
+.all-users {
+  display: flex;
+  flex-direction: column;
+  row-gap: 5px;
+  .users-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    h3 {
+      margin: 0px;
+    }
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .all-users {
+    .users-header {
+      flex-direction: column;
+      row-gap: 10px;
+    }
+  }
+}

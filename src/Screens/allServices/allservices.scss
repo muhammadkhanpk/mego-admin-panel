@@ -1,0 +1,23 @@
+.all-services {
+  display: flex;
+  flex-direction: column;
+  row-gap: 5px;
+  .services-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    h3 {
+      margin: 0px;
+    }
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .all-services {
+    .services-header {
+      flex-direction: column;
+      row-gap: 10px;
+    }
+  }
+}

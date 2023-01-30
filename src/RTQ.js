@@ -2,43 +2,54 @@ import React from "react";
 import GooglePayButton from "@google-pay/button-react";
 function RTQ() {
   return (
-    <GooglePayButton
-      environment="TEST"
-      paymentRequest={{
-        apiVersion: 2,
-        apiVersionMinor: 0,
-        allowedPaymentMethods: [
-          {
-            type: "CARD",
-            parameters: {
-              allowedAuthMethods: ["PAN_ONLY", "CRYPTOGRAM_3DS"],
-              allowedCardNetworks: ["MASTERCARD", "VISA"],
-            },
-            tokenizationSpecification: {
-              type: "PAYMENT_GATEWAY",
+    <>
+      <GooglePayButton
+        environment="TEST"
+        paymentRequest={{
+          apiVersion: 2,
+          apiVersionMinor: 0,
+          allowedPaymentMethods: [
+            {
+              type: "CARD",
               parameters: {
-                gateway: "example",
-                gatewayMerchantId: "exampleGatewayMerchantId",
+                allowedAuthMethods: ["PAN_ONLY", "CRYPTOGRAM_3DS"],
+                allowedCardNetworks: ["MASTERCARD", "VISA"],
+              },
+              tokenizationSpecification: {
+                type: "PAYMENT_GATEWAY",
+                parameters: {
+                  gateway: "example",
+                  gatewayMerchantId: "exampleGatewayMerchantId",
+                },
               },
             },
+          ],
+          merchantInfo: {
+            merchantId: "12345678901234567890",
+            merchantName: "Demo Merchant",
           },
-        ],
-        merchantInfo: {
-          merchantId: "12345678901234567890",
-          merchantName: "Demo Merchant",
-        },
-        transactionInfo: {
-          totalPriceStatus: "FINAL",
-          totalPriceLabel: "Total",
-          totalPrice: "100.00",
-          currencyCode: "USD",
-          countryCode: "US",
-        },
-      }}
-      onLoadPaymentData={(paymentRequest) => {
-        console.log("load payment data", paymentRequest);
-      }}
-    />
+          transactionInfo: {
+            totalPriceStatus: "FINAL",
+            totalPriceLabel: "Total",
+            totalPrice: "100.00",
+            currencyCode: "USD",
+            countryCode: "US",
+          },
+        }}
+        onLoadPaymentData={(paymentRequest) => {
+          console.log("load payment data", paymentRequest);
+        }}
+      ></GooglePayButton>
+      <br />
+      <br />
+      <h1>Hello</h1>
+      <video controls autoplay loop playsinline>
+        <source
+          src="https://firebasestorage.googleapis.com/v0/b/picswagger.appspot.com/o/uploads%2FpicswaggerImages%2FNew%20Recording%20-%201_6_2023%2C%2010_53_48%20AM%20(1).webm?alt=media&token=a3b761f9-e601-4a47-be03-a89a696a65d5https://firebasestorage.googleapis.com/v0/b/picswagger.appspot.com/o/uploads%2FpicswaggerImages%2FNew%20Recording%20-%201_6_2023%2C%2010_53_48%20AM%20(1).webm?alt=media&token=a3b761f9-e601-4a47-be03-a89a696a65d5"
+          type="video/webm"
+        />
+      </video>
+    </>
   );
 }
 

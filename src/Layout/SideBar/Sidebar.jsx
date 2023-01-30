@@ -21,6 +21,7 @@ import {
 } from "react-icons/ai";
 import { GiSettingsKnobs } from "react-icons/gi";
 import { FaUsersCog } from "react-icons/fa";
+import mego from "../../assets/mego.png";
 const { Sider } = Layout;
 export default function SideBar({ collapsed }) {
   const navigate = useNavigate();
@@ -31,7 +32,7 @@ export default function SideBar({ collapsed }) {
       <Sider trigger={null} collapsible collapsed={collapsed}>
         <div className="logo">
           <div className="logo_div">
-            <FcOrgUnit className="img-logo" />
+            <img src={mego} className={`${collapsed ? "img-small" : ""}`} />
           </div>
         </div>
         <Menu
@@ -84,7 +85,7 @@ export default function SideBar({ collapsed }) {
               icon: <MdList />,
               label: "All Booking Lists",
               onClick: () => {
-                navigate("/dashboard");
+                navigate("/allBookingLists");
               },
             },
             {
@@ -92,25 +93,25 @@ export default function SideBar({ collapsed }) {
               icon: <AiOutlineFlag className="icon-x" />,
               label: "Slider Banner",
               onClick: () => {
-                navigate("/dashboard");
+                navigate("/allSliders");
               },
             },
             {
               key: "8",
               icon: <MdPayment className="icon-x" />,
-              label: "Payment Request",
+              label: "Payments",
               onClick: () => {
-                navigate("/dashboard");
+                navigate("/payments");
               },
             },
-            {
-              key: "9",
-              icon: <MdCancel className="icon-x" />,
-              label: "Canceled List",
-              onClick: () => {
-                navigate("/dashboard");
-              },
-            },
+            // {
+            //   key: "9",
+            //   icon: <MdCancel className="icon-x" />,
+            //   label: "Canceled List",
+            //   onClick: () => {
+            //     navigate("/dashboard");
+            //   },
+            // },
             {
               key: "10",
               icon: <GiSettingsKnobs className="icon-x" />,
@@ -132,7 +133,7 @@ export default function SideBar({ collapsed }) {
               icon: <MdCircleNotifications className="icon-x" />,
               label: "Push Notification",
               onClick: () => {
-                navigate("/dashboard");
+                navigate("/push-notification");
               },
             },
             {

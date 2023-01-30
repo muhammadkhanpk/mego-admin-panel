@@ -1,0 +1,76 @@
+.dashboard {
+  h3,
+  h2,
+  h1 {
+    margin: 0px;
+  }
+  .top-row {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+    .main-item {
+      display: flex;
+      align-items: flex-end;
+      flex-direction: column;
+      width: 280px;
+      height: 140px;
+      position: relative;
+      border-radius: 5px;
+      padding: 10px;
+      p {
+        margin-bottom: 5px;
+        font-size: 18px;
+      }
+      box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px,
+        rgb(209, 213, 219) 0px 0px 0px 1px inset;
+      .main-child {
+        position: absolute;
+        top: -10px;
+        left: 10px;
+        width: 60px;
+        height: 60px;
+        border-radius: 3px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        .icon {
+          font-size: 35px;
+          color: white;
+        }
+      }
+      .bottom {
+        display: flex;
+        align-self: flex-start;
+        align-items: center;
+        padding-bottom: 10px;
+        .icon {
+          font-size: 18px;
+        }
+      }
+    }
+    .box-orange {
+      background-color: orange;
+    }
+    .box-green {
+      background-color: green;
+    }
+    .box-red {
+      background-color: rgb(94, 4, 4);
+    }
+    .box-blue {
+      background-color: rgb(82, 167, 247);
+    }
+  }
+  .tabs-row {
+    margin-top: 15px;
+    position: relative;
+    .select-country {
+      position: absolute;
+      right: 0px;
+      top: 0;
+    }
+  }
+}
+.ant-divider {
+  margin: 10px 0px;
+}

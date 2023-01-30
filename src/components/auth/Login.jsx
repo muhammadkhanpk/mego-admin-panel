@@ -4,13 +4,16 @@ import { useNavigate } from "react-router-dom";
 import { LockOutlined, UserOutlined, MailOutlined } from "@ant-design/icons";
 import { Button, Form, Input, Radio, message } from "antd";
 import mego from "../../assets/mego.png";
-import axios from "axios";
 //loader
 import Loader from "../Loaders/Loader";
+import { userSuccess } from "../../redux/slices/userSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { api } from "../../Services/Utils";
 //Redux
 export default function Login() {
   const navigate = useNavigate();
-
+  const dispatch = useDispatch();
+  const { user } = useSelector((state) => state.user);
   const [loading, setLoading] = useState(false);
   const onFinishLogin = async (values) => {
     setLoading(true);
@@ -19,9 +22,9 @@ export default function Login() {
       email: values.email.toLowerCase(),
     };
     try {
-      let url = process.env.REACT_APP_BASE_URL;
-      const res = await axios.post(`${url}/admins/loginAdmin`, data);
+      const res = await api.post(`/admins/loginAdmin`, data);
       const d = res.data;
+      dispatch(userSuccess(d));
       sessionStorage.setItem("uid", JSON.stringify(d.token));
       navigate("/dashboard");
       setLoading(false);
