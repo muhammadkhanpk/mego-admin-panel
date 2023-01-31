@@ -16,14 +16,16 @@ function NewServiceModel({ newServiceModal, setNewServiceModal }) {
     setNewServiceModal(false);
   };
   const onFinish = async (values) => {
-    const { name, price, description, serviceImg, serviceIcon } = values;
+    const { name, pkPrice, uaePrice, description, serviceImg, serviceIcon } =
+      values;
     setLoading(true);
     try {
       var formData = new FormData();
       formData.append("serviceImg", serviceImg);
       formData.append("serviceIcon", serviceIcon);
       formData.append("name", name);
-      formData.append("price", price);
+      formData.append("pkPrice", pkPrice);
+      formData.append("uaePrice", uaePrice);
       formData.append("description", description);
       // formData.append("token", user.token);
       let url = `/services/saveService`;
@@ -76,8 +78,38 @@ function NewServiceModel({ newServiceModal, setNewServiceModal }) {
             </Col>
             <Col span={11}>
               <Form.Item
-                label="Price"
-                name="price"
+                label="Description"
+                name="description"
+                rules={[
+                  {
+                    required: true,
+                    message: "Please enter service description!",
+                  },
+                ]}
+              >
+                <TextArea rows={1} placeholder="Enter description" />
+              </Form.Item>
+            </Col>
+          </Row>
+          <Row justify="space-between">
+            <Col span={11}>
+              <Form.Item
+                label="Service Price in Pakistan"
+                name="pkPrice"
+                rules={[
+                  {
+                    required: true,
+                    message: "Please enter service price!",
+                  },
+                ]}
+              >
+                <Input type="number" placeholder="Enter price" />
+              </Form.Item>
+            </Col>
+            <Col span={11}>
+              <Form.Item
+                label="Service Price in UAE"
+                name="uaePrice"
                 rules={[
                   {
                     required: true,
@@ -90,18 +122,6 @@ function NewServiceModel({ newServiceModal, setNewServiceModal }) {
             </Col>
           </Row>
 
-          <Form.Item
-            label="Description"
-            name="description"
-            rules={[
-              {
-                required: true,
-                message: "Please enter service description!",
-              },
-            ]}
-          >
-            <TextArea rows={2} placeholder="Enter description" />
-          </Form.Item>
           <Form.Item
             label="Service Icon"
             name="serviceIcon"

@@ -20,7 +20,14 @@ function NewSubServiceModel({ newSubServiceModal, setNewSubServiceModal }) {
   };
   const onFinish = async (values) => {
     console.log("values are ", values);
-    const { name, price, description, subServiceImg, subServiceIcon } = values;
+    const {
+      name,
+      pkPrice,
+      uaePrice,
+      description,
+      subServiceImg,
+      subServiceIcon,
+    } = values;
 
     setLoading(true);
     try {
@@ -28,7 +35,8 @@ function NewSubServiceModel({ newSubServiceModal, setNewSubServiceModal }) {
       formData.append("subServiceImg", subServiceImg);
       formData.append("subServiceIcon", subServiceIcon);
       formData.append("name", name);
-      formData.append("price", price);
+      formData.append("pkPrice", pkPrice);
+      formData.append("uaePrice", uaePrice);
       formData.append("description", description);
       // formData.append("token", user.token);
       let url = `/services/saveSubService/${serviceId}`;
@@ -83,8 +91,38 @@ function NewSubServiceModel({ newSubServiceModal, setNewSubServiceModal }) {
             </Col>
             <Col span={11}>
               <Form.Item
-                label="Price"
-                name="price"
+                label="Description"
+                name="description"
+                rules={[
+                  {
+                    required: true,
+                    message: "Please enter service description!",
+                  },
+                ]}
+              >
+                <TextArea rows={1} placeholder="Enter description" />
+              </Form.Item>
+            </Col>
+          </Row>
+          <Row justify="space-between">
+            <Col span={11}>
+              <Form.Item
+                label="Sub Service Price for Pakistan"
+                name="pkPrice"
+                rules={[
+                  {
+                    required: true,
+                    message: "Please enter sub service price!",
+                  },
+                ]}
+              >
+                <Input type="number" placeholder="Enter price" />
+              </Form.Item>
+            </Col>
+            <Col span={11}>
+              <Form.Item
+                label="Sub Service Price in UAE"
+                name="uaePrice"
                 rules={[
                   {
                     required: true,
@@ -96,18 +134,7 @@ function NewSubServiceModel({ newSubServiceModal, setNewSubServiceModal }) {
               </Form.Item>
             </Col>
           </Row>
-          <Form.Item
-            label="Description"
-            name="description"
-            rules={[
-              {
-                required: true,
-                message: "Please enter service description!",
-              },
-            ]}
-          >
-            <TextArea rows={1} placeholder="Enter description" />
-          </Form.Item>
+
           <Form.Item
             label="Service Icon"
             name="subServiceIcon"

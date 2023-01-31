@@ -6,8 +6,8 @@ const getToken = () => {
   return token;
 };
 const api = axios.create({
-  baseURL: "https://mego-apis.vercel.app/api" || "http://localhost:5500",
-  // baseURL: "http://localhost:5500/api",
+  // baseURL: "https://mego-apis.vercel.app/api" || "http://localhost:5500",
+  baseURL: "http://localhost:5500/api",
   headers: {
     Authorization: `JTW ${getToken()}`,
   },
