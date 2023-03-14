@@ -8,9 +8,11 @@ import {
 } from "@ant-design/icons";
 import "./table.scss";
 import { useNavigate } from "react-router-dom";
+import { useDeleteSliderMutation } from "../../redux/apis/slidersApis";
 function SliderTable({ data }) {
   const navigate = useNavigate();
-  console.log("sliders data ", data);
+  const [deleteSlider, response] = useDeleteSliderMutation();
+  // console.log("sliders data ", data);
   const columns = [
     {
       title: "Image",
@@ -35,7 +37,10 @@ function SliderTable({ data }) {
             title={"Are you sure?"}
             okText="Ok"
             cancelText="Cancel"
-            onConfirm={() => {}}
+            onConfirm={() => {
+              let x = deleteSlider(record._id);
+              x.then((val) => console.log(val));
+            }}
           >
             <DeleteOutlined className="icon danger" />
           </Popconfirm>

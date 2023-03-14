@@ -15,6 +15,16 @@ export const sliderApis = createApi({
     getAllSliders: builder.query({
       query: () => "/sliders/allSliders",
     }),
+    deleteSlider: builder.mutation({
+      query: (id) => ({
+        url: `/sliders/deleteSlider/${id}`,
+        method: "DELETE",
+      }),
+    }),
   }),
 });
-export const { useGetAllSlidersQuery, useGetSliderQuery } = sliderApis;
+export const {
+  useGetAllSlidersQuery,
+  useGetSliderQuery,
+  useDeleteSliderMutation,
+} = sliderApis;

@@ -117,7 +117,7 @@ export default function SideBar({ collapsed }) {
               icon: <GiSettingsKnobs className="icon-x" />,
               label: "Booking Settings",
               onClick: () => {
-                navigate("/dashboard");
+                navigate("/booking-setting");
               },
             },
             {
@@ -125,7 +125,7 @@ export default function SideBar({ collapsed }) {
               icon: <AiOutlineSetting className="icon-x" />,
               label: "Multi Settings",
               onClick: () => {
-                navigate("/dashboard");
+                navigate("/multi-settings");
               },
             },
             {

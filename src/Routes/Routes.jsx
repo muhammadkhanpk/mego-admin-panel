@@ -19,6 +19,8 @@ import AllSliders from "../Screens/allSliders/AllSliders";
 import AllBookingLists from "../Screens/allBookings/AllBookingLists";
 import AllPayments from "../Screens/allPayments/AllPayments";
 import Pushnotification from "../Screens/pushNotification/Pushnotification";
+import BookingSetting from "../Screens/bookingSettings/BookingSetting";
+import MultiSettings from "../Screens/multisettings/MultiSettings";
 export default function AppRoutes() {
   let uid = JSON.parse(sessionStorage.getItem("uid"));
   return (
@@ -136,6 +138,26 @@ export default function AppRoutes() {
               <PrivateRoute>
                 <Layout>
                   <Pushnotification />
+                </Layout>
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/booking-setting"
+            element={
+              <PrivateRoute>
+                <Layout>
+                  <BookingSetting />
+                </Layout>
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/multi-settings"
+            element={
+              <PrivateRoute>
+                <Layout>
+                  <MultiSettings />
                 </Layout>
               </PrivateRoute>
             }

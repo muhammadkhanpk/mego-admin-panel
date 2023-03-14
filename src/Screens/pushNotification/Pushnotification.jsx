@@ -1,9 +1,10 @@
 import { useState, useEffect } from "react";
-import { Button, Checkbox, Form, Input, Radio, Select } from "antd";
+import { Button, Checkbox, Form, Input, Radio, Select, message } from "antd";
 import FullPageLoading from "../../components/Loaders/Loader";
-
+import axios from "axios";
+import { api } from "../../Services/Utils";
 const { Option } = Select;
-const people = ["Customers", "Providers"];
+const people = ["Customer", "Provider"];
 const country = ["PAKISTAN", "UAE"];
 function Pushnotification() {
   const [form] = Form.useForm();
@@ -22,12 +23,25 @@ function Pushnotification() {
     }
   };
   const handleSend = (values) => {
-    console.log(values);
-    // setLoading(true);
+    // console.log(values);
+    setLoading(true);
     let data = {
       title: values.title,
       description: values.description,
+      country: values.country,
+      sendTo: values.sendTo.map((val) => val.toLowerCase()),
     };
+    api
+      .post("/notification/sendPushNotification", data)
+      .then((response) => {
+        setLoading(false);
+        form.resetFields();
+        message.success("Notification is sended");
+      })
+      .catch((e) => {
+        console.log(e);
+        setLoading(false);
+      });
   };
   return (
     <>
@@ -49,7 +63,7 @@ function Pushnotification() {
             },
           ]}
         >
-          <Input className="input-primary" placeholder="Title" />
+          <Input className="input-primary" placeholder="Title" value="a" />
         </Form.Item>
         <Form.Item
           label="Short Description"
@@ -61,7 +75,11 @@ function Pushnotification() {
             },
           ]}
         >
-          <Input className="input-primary" placeholder="Short Description" />
+          <Input
+            className="input-primary"
+            placeholder="Short Description"
+            value="a"
+          />
         </Form.Item>
         <Form.Item
           label="Send To"
@@ -108,7 +126,7 @@ function Pushnotification() {
           </Select>
         </Form.Item>
         <Form.Item>
-          <Button htmlType="submit" className="btn-primary">
+          <Button htmlType="submit" className="btn-primary" type="primary">
             Send
           </Button>
         </Form.Item>
